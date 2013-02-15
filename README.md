@@ -3,8 +3,7 @@
 
 SLIMful is a JSON REST API build with the use of [Slim Framework](http://www.slimframework.com) and [Doctrine](http://www.doctrine-project.org). 
 
-## Installation 
-***
+## Installation
 
 ### Composer
 Installation can be done with the use of composer. If you don't have composer yet you can install it by doing:
@@ -34,7 +33,6 @@ To install it globaly
     $ /path/to/slimful/vendor/bin/doctrine orm:schema-tool:update --force
     
 ## Entities
-***
 
 To find out how Doctrine entities work you can read about [Object Relation Mapper](http://www.doctrine-project.org/projects/orm.html). The entities can be found in:
 
@@ -43,6 +41,5 @@ To find out how Doctrine entities work you can read about [Object Relation Mappe
 There is a simple user entity that can be used for testing purposes.
 
 ## Documentation
-***
 
 Will follow soon.

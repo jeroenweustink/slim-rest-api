@@ -95,6 +95,7 @@ abstract class Resource
     {
         $this->getSlim()->status($status);
         $this->getSlim()->response()->header('Content-Type', 'application/json');
+        $this->getSlim()->response()->header('Allow', 'GET,PUT,POST,DELETE');
         $this->getSlim()->response()->body(json_encode($data));
         return;
     }

@@ -23,7 +23,7 @@ switch($app->request()->getMethod()) {
     case 'PUT':
         $app->put('/:resource(/:id)', function($resource, $id = null) {
             $resource = \App\Resource::load($resource);
-            $resource->put();
+            $resource->put($id);
         });
         break;
     case 'DELETE':
@@ -32,6 +32,7 @@ switch($app->request()->getMethod()) {
             $resource->delete($id);
         });
         break;
+
 }
 
 $app->run();
