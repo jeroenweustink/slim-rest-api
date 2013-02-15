@@ -1,0 +1,10 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+        "symfony/class-loader": "2.3.*",
+        "symfony/console": "2.3.*",
+        "doctrine/common": "2.3.*",
+        "doctrine/dbal": "2.3.*",
+        "doctrine/orm": "2.3.*"
+    }
+}

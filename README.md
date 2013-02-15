@@ -1,4 +1,3 @@
-SLIMful
-=======
+A Slim Framework JSON RESTful API with Doctrine 2
+==========================
 
-SLIMful is a JSON REST API build with the use of Slim Framework and Doctrine
