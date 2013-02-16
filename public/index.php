@@ -5,7 +5,7 @@ require_once __DIR__ . '/../class-loader.php';
 $app = new Slim\Slim();
 
 // Get
-$app->get('/:resource(/:id)', function($resource, $id = null) {
+$app->get('/:resource(/(:id)(/))', function($resource, $id = null) {
     $resource = \App\Resource::load($resource);
     if ($resource === null) {
         \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
@@ -15,7 +15,7 @@ $app->get('/:resource(/:id)', function($resource, $id = null) {
 });
 
 // Post
-$app->post('/:resource', function($resource) {
+$app->post('/:resource(/)', function($resource) {
     $resource = \App\Resource::load($resource);
     if ($resource === null) {
         \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
@@ -25,7 +25,7 @@ $app->post('/:resource', function($resource) {
 });
 
 // Put
-$app->put('/:resource/:id', function($resource, $id = null) {
+$app->put('/:resource/:id(/)', function($resource, $id = null) {
     $resource = \App\Resource::load($resource);
     if ($resource === null) {
         \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
@@ -35,7 +35,7 @@ $app->put('/:resource/:id', function($resource, $id = null) {
 });
 
 // Delete
-$app->delete('/:resource/:id', function($resource, $id = null) {
+$app->delete('/:resource/:id(/)', function($resource, $id = null) {
     $resource = \App\Resource::load($resource);
     if ($resource === null) {
         \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
