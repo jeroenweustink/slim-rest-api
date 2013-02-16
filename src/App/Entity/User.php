@@ -24,12 +24,6 @@ class User extends Entity
     protected $password;
 
     /**
-     * @Column(type="string", length=32)
-     * @var string
-     */
-    protected $name;
-
-    /**
      * @return string
      */
     public function getEmail()
@@ -59,21 +53,5 @@ class User extends Entity
     public function setPassword($password)
     {
         $this->password = md5($password);
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
     }
 }

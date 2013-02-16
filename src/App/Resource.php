@@ -28,6 +28,9 @@ abstract class Resource
     const STATUS_METHOD_NOT_ALLOWED = 405;
     const STATUS_NOT_ACCEPTED = 406;
 
+    const STATUS_INTERNAL_SERVER_ERROR = 500;
+    const STATUS_NOT_IMPLEMENTED = 501;
+
     /**
      * @var \Slim\Slim
      */
@@ -91,12 +94,17 @@ abstract class Resource
      * @param int $status
      * @param array $data
      */
-    public function response($status = 200, array $data = array())
+    public static function response($status = 200, array $data = array())
     {
-        $this->getSlim()->status($status);
-        $this->getSlim()->response()->header('Content-Type', 'application/json');
-        $this->getSlim()->response()->header('Allow', 'GET,PUT,POST,DELETE');
-        $this->getSlim()->response()->body(json_encode($data));
+        /**
+         * @var \Slim\Slim $slim
+         */
+        $slim = \Slim\Slim::getInstance();
+
+        $slim->status($status);
+        $slim->response()->header('Content-Type', 'application/json');
+        $slim->response()->header('Allow', 'GET,PUT,POST,DELETE');
+        $slim->response()->body(json_encode($data));
         return;
     }
 
@@ -104,9 +112,13 @@ abstract class Resource
      * @param $resource
      * @return mixed
      */
-    static function load($resource)
+    public static function load($resource)
     {
         $class = __NAMESPACE__ . '\\Resource\\' . ucfirst($resource);
+        if (!class_exists($class)) {
+            return null;
+        }
+
         return new $class();
     }
 

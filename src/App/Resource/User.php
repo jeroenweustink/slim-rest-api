@@ -32,15 +32,63 @@ class User extends Resource
         }
 
         $response = array('user' => $data);
-        $this->response(self::STATUS_OK, $response);
+        self::response(self::STATUS_OK, $response);
     }
 
     /**
-     * Create a entry for later use
+     * Create user
      */
     public function post()
     {
+        $email = $this->getSlim()->request()->params('email');
+        $password = $this->getSlim()->request()->params('password');
 
+        if (empty($email) || empty($password) || $email === null || $password === null) {
+            self::response(self::STATUS_BAD_REQUEST);
+            return;
+        }
+
+        $user = $this->getUserService()->createUser($email, $password);
+
+        self::response(self::STATUS_CREATED, array('user', $user));
+    }
+
+    /**
+     * Update user
+     */
+    public function put($id)
+    {
+        $email = $this->getSlim()->request()->params('email');
+        $password = $this->getSlim()->request()->params('password');
+
+        if (empty($email) && empty($password) || $email === null && $password === null) {
+            self::response(self::STATUS_BAD_REQUEST);
+            return;
+        }
+
+        $user = $this->getUserService()->updateUser($id, $email, $password);
+
+        if ($user === null) {
+            self::response(self::STATUS_NOT_IMPLEMENTED);
+            return;
+        }
+
+        self::response(self::STATUS_NO_CONTENT);
+    }
+
+    /**
+     * @param $id
+     */
+    public function delete($id)
+    {
+        $status = $this->getUserService()->deleteUser($id);
+
+        if ($status === false) {
+            self::response(self::STATUS_NOT_FOUND);
+            return;
+        }
+
+        self::response(self::STATUS_OK);
     }
 
     /**
