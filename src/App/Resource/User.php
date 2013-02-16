@@ -31,6 +31,11 @@ class User extends Resource
             $data = $this->getUserService()->getUser($id);
         }
 
+        if ($data === null) {
+            self::response(self::STATUS_NOT_FOUND);
+            return;
+        }
+
         $response = array('user' => $data);
         self::response(self::STATUS_OK, $response);
     }
