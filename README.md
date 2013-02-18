@@ -28,6 +28,16 @@ To install it globaly
 ### Database credentials
 
     $ cp /path/to/slimful/config/local.ini/dist /path/to/slimful/config/local.ini
+
+Edit the credentials in the local.ini file
+
+   [database]
+   driv = 'pdo_mysql'
+   host = 'localhost'
+   port = '3306'
+   user = ''
+   pass = ''
+   name = ''
     
 ### Create schema
 
@@ -39,13 +49,13 @@ To install it globaly
     
 ## Entities
 
-To find out how Doctrine entities work you can read about [Object Relation Mapper](http://www.doctrine-project.org/projects/orm.html). The entities can be found in:
+To find out how Doctrine entities work, see [Object Relation Mapper](http://www.doctrine-project.org/projects/orm.html). The entities can be found in:
 
     $ cd /path/to/slimful/app/entity/
 
 ## Example
 
-A user resource has been created for testing purposes. These are some cURL command you can use
+A user resource has been created for testing purposes. These are some cURL commands you can use
 
     // Create a user
     $ curl -i -X POST -d "email=test@test.com&password=foo" http://yourapi.com/user
