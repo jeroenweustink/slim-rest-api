@@ -31,13 +31,13 @@ To install it globaly
 
 Edit the credentials in the local.ini file
 
-   [database]
-   driv = 'pdo_mysql'
-   host = 'localhost'
-   port = '3306'
-   user = ''
-   pass = ''
-   name = ''
+    [database]
+    driv = 'pdo_mysql'
+    host = 'localhost'
+    port = '3306'
+    user = ''
+    pass = ''
+    name = ''
     
 ### Create schema
 
