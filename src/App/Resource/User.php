@@ -97,6 +97,14 @@ class User extends Resource
     }
 
     /**
+     * Show options in header
+     */
+    public function options()
+    {
+        self::response(self::STATUS_OK, array(), array('GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'));
+    }
+
+    /**
      * @return \App\Service\User
      */
     public function getUserService()
@@ -110,5 +118,13 @@ class User extends Resource
     public function setUserService($userService)
     {
         $this->userService = $userService;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 }

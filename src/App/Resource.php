@@ -91,10 +91,18 @@ abstract class Resource
     }
 
     /**
+     * General options method
+     */
+    public function options()
+    {
+        $this->response(self::STATUS_METHOD_NOT_ALLOWED);
+    }
+
+    /**
      * @param int $status
      * @param array $data
      */
-    public static function response($status = 200, array $data = array())
+    public static function response($status = 200, array $data = array(), $allow = array())
     {
         /**
          * @var \Slim\Slim $slim
@@ -103,8 +111,15 @@ abstract class Resource
 
         $slim->status($status);
         $slim->response()->header('Content-Type', 'application/json');
-        $slim->response()->header('Allow', 'GET,PUT,POST,DELETE');
-        $slim->response()->body(json_encode($data));
+
+        if (!empty($data)) {
+            $slim->response()->body(json_encode($data));
+        }
+
+        if (!empty($allow)) {
+            $slim->response()->header('Allow', strtoupper(implode(',', $allow)));
+        }
+
         return;
     }
 

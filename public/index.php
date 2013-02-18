@@ -44,6 +44,16 @@ $app->delete('/:resource/:id(/)', function($resource, $id = null) {
     }
 });
 
+// Options
+$app->options('/:resource(/)', function($resource, $id = null) {
+    $resource = \App\Resource::load($resource);
+    if ($resource === null) {
+        \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
+    } else {
+        $resource->options();
+    }
+});
+
 // Not found
 $app->notFound(function() {
     \App\Resource::response(\App\Resource::STATUS_NOT_FOUND);
