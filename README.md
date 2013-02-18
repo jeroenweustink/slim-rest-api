@@ -1,14 +1,14 @@
-# SLIMful
+# Slim REST API
 ***
 
-SLIMful is a JSON REST API build with the use of [Slim Framework](http://www.slimframework.com) and [Doctrine](http://www.doctrine-project.org). 
+This is a JSON REST API build with the use of [Slim Framework](http://www.slimframework.com) and [Doctrine](http://www.doctrine-project.org).
 
 ## Installation
 
 ### Git clone
 To get the latest source you can use git clone.
 
-    $ git clone https://github.com/jeroenweustink/SLIMful.git /path/to/slimful
+    $ git clone https://github.com/jeroenweustink/slim-rest-api.git /path/to/slim-rest-api
 
 ### Composer
 Installation can be done with the use of composer. If you don't have composer yet you can install it by doing:
@@ -21,13 +21,13 @@ To install it globaly
     
 ### Vendor
 
-    $ cd /path/to/slimful
+    $ cd /path/to/slim-rest-api
     $ composer update
     $ composer install
     
 ### Database credentials
 
-    $ cp /path/to/slimful/config/local.ini/dist /path/to/slimful/config/local.ini
+    $ cp /path/to/slim-rest-api/config/local.ini.dist /path/to/slim-rest-api/config/local.ini
 
 Edit the credentials in the local.ini file
 
@@ -41,17 +41,17 @@ Edit the credentials in the local.ini file
     
 ### Create schema
 
-    $ /path/to/slimful/vendor/bin/doctrine orm:schema-tool:create
+    $ /path/to/slim-rest-api/vendor/bin/doctrine orm:schema-tool:create
     
 ### Update schema
 
-    $ /path/to/slimful/vendor/bin/doctrine orm:schema-tool:update --force
+    $ /path/to/slim-rest-api/vendor/bin/doctrine orm:schema-tool:update --force
     
 ## Entities
 
 To find out how Doctrine entities work, see [Object Relation Mapper](http://www.doctrine-project.org/projects/orm.html). The entities can be found in:
 
-    $ cd /path/to/slimful/app/entity/
+    $ cd /path/to/slim-rest-api/app/entity/
 
 ## Example
 
@@ -67,7 +67,10 @@ A user resource has been created for testing purposes. These are some cURL comma
     $ curl -i -X GET http://yourapi.com/user
 
     // Update a user
-    $ curl -i -X PUT -d "email=foo@tbar.com&password=bar" http://yourapi.com/user
+    $ curl -i -X PUT -d "email=foo@bar.com&password=bar" http://yourapi.com/user
 
     // Delete a user
-    $ curl -i -X DELETE  http://yourapi.com/user/1
+    $ curl -i -X DELETE http://yourapi.com/user/1
+
+    // Resource options
+    $ curl -i -X OPTIONS http://yourapi.com/user
