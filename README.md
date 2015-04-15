@@ -67,7 +67,7 @@ A user resource has been created for testing purposes. These are some cURL comma
     $ curl -i -X GET http://yourapi.com/user
 
     // Update a user
-    $ curl -i -X PUT -d "email=foo@bar.com&password=bar" http://yourapi.com/user
+    $ curl -i -X PUT -d "email=foo@bar.com&password=bar" http://yourapi.com/user/1
 
     // Delete a user
     $ curl -i -X DELETE http://yourapi.com/user/1
